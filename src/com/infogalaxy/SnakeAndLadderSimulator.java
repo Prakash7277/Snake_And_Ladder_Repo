@@ -18,13 +18,13 @@ public class SnakeAndLadderSimulator {
 
     //Rolling the die to get Position
     public void rollsDie() {
-
+        while (position!=100) {
             Random random = new Random();
-            int dieNo = (int) ((Math.random() * (6 - 1)) + 1);
+            int dieNo = (int) ((Math.random() * (7 - 1)) + 1);
             System.out.println("Die Number : " + dieNo);
 
             // checking for option to play
-            int option = (int) ((Math.random() * (3 - 1)) + 1);
+            int option = (int) ((Math.random() * (4 - 1)) + 1);
             System.out.println("Position No : " + option);
             switch (option) {
                 case NO_PLAY:
@@ -39,6 +39,7 @@ public class SnakeAndLadderSimulator {
                     position = position - dieNo;
                     break;
             }
+        }
     }
 
     public static void main(String[] args) {
@@ -48,6 +49,7 @@ public class SnakeAndLadderSimulator {
         player1.showPosition();
         //Rolling the die
         player1.rollsDie();
+        player1.showPosition();
     }
 
 }
