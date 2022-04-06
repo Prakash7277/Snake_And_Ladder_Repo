@@ -3,22 +3,51 @@ package com.infogalaxy;
 import java.util.Random;
 
 public class SnakeAndLadderSimulator {
-    //UC-1 Single Player at Start Position 0
-    public void playerPosition(){
-        int position = 0;
-        System.out.println("Player Position : "+position);
+
+    //position of player
+    int position = 0;
+    //Define Constant for Options
+    final int NO_PLAY = 1;
+    final int LADDER = 2;
+    final int SNAKE = 3;
+
+    //Showing the player current position
+    public void showPosition() {
+        System.out.println("position : " + position);
     }
-    //UC-2 Use (random) To Get the Number Between 1 To 6
-    public void rollsDie(){
-        Random random = new Random();
-        int die = (int) ((Math.random()*(6-1))+1);
-        System.out.println("Die Number : "+die);
+
+    //Rolling the die to get Position
+    public void rollsDie() {
+
+            Random random = new Random();
+            int dieNo = (int) ((Math.random() * (6 - 1)) + 1);
+            System.out.println("Die Number : " + dieNo);
+
+            // checking for option to play
+            int option = (int) ((Math.random() * (3 - 1)) + 1);
+            System.out.println("Position No : " + option);
+            switch (option) {
+                case NO_PLAY:
+                    System.out.println("No play Arrived. Stay on same Position");
+                    break;
+                case LADDER:
+                    System.out.println("HURRAY !!! you got ladder.");
+                    position = position + dieNo;
+                    break;
+                case SNAKE:
+                    System.out.println("OOPS  !!! you got Snake. ");
+                    position = position - dieNo;
+                    break;
+            }
     }
 
     public static void main(String[] args) {
-        SnakeAndLadderSimulator snake = new SnakeAndLadderSimulator();
-        snake.playerPosition();
-        snake.rollsDie();
+        // Creating Player 1 object
+        SnakeAndLadderSimulator player1 = new SnakeAndLadderSimulator();
+        // Showing Player1 Position
+        player1.showPosition();
+        //Rolling the die
+        player1.rollsDie();
     }
 
 }
