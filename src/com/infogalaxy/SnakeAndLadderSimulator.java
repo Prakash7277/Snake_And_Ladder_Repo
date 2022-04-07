@@ -6,6 +6,7 @@ public class SnakeAndLadderSimulator {
 
     //position of player
     int position = 0;
+    int countRoll = 0;
     //Define Constant for Options
     final int NO_PLAY = 1;
     final int LADDER = 2;
@@ -20,6 +21,7 @@ public class SnakeAndLadderSimulator {
     public void rollsDie() {
         while (position!=100) {
             System.out.println("************************************");
+            countRoll++;
             Random random = new Random();
             int dieNo = (int) ((Math.random() * (7 - 1)) + 1);
             System.out.println("Die Number : " + dieNo);
@@ -58,7 +60,9 @@ public class SnakeAndLadderSimulator {
             showPosition();
         }
     }
-
+public void printCountRoll(){
+    System.out.println("Total Rolled Dice : "+countRoll);
+}
     public static void main(String[] args) {
         // Creating Player 1 object
         SnakeAndLadderSimulator player1 = new SnakeAndLadderSimulator();
@@ -67,6 +71,7 @@ public class SnakeAndLadderSimulator {
         //Rolling the die
         player1.rollsDie();
         player1.showPosition();
+        player1.printCountRoll();
     }
 
 }
